@@ -15,13 +15,13 @@
 
 {% block contenido_base %}
 
-<h1>tecnologias</h1>
-<a href=>Crear tecnologia!</a>
+<h1>servicios</h1>
+<a href=>Crear servicios!</a>
 <br>
-<a href=>Buscar tecnologia</a>
+<a href=>Buscar servicios</a>
 
 <br><br>
-<h3>tecnologias:</h3>
+<h3>contacto:</h3>
 
 <table class="coder-table">
   <tbody>
@@ -30,27 +30,16 @@
         <strong>Nombre</strong>
       </th>
       <th>
-        <strong>Comision</strong>
+        <strong>apellido</strong>
       </th>
     </tr>
-    {% for tecnologia in tecnologias %}
+    {% for contacto in contactos %}
     <tr>
-      <td>{{tecnologias.nombre}}</td>
-      <td>{{tecnologias.version}}</td>
+      <td>{{contactos.nombre}}</td>
+      <td>{{contactos.version}}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-
-{% endblock contenido_base %}
-
-<!--{% extends "AppsServicios/plantilla_base.html" %}
-
-{% block contenido_base %}
-
-Lista de tecnologias:
-    {% for tecnologias in AppsServicios %}
-    <p>{{ tecnologias.nombre }}</p>
-    {% endfor %}
 
 {% endblock contenido_base %}

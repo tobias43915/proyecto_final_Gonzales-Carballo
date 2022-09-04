@@ -15,13 +15,13 @@
 
 {% block contenido_base %}
 
-<h1>tecnologias</h1>
-<a href=>Crear tecnologia!</a>
+<h1>servicios</h1>
+<a href=>Crear servicios!</a>
 <br>
-<a href=>Buscar tecnologia</a>
+<a href=>Buscar servicios</a>
 
 <br><br>
-<h3>tecnologias:</h3>
+<h3>servicios:</h3>
 
 <table class="coder-table">
   <tbody>
@@ -30,13 +30,13 @@
         <strong>Nombre</strong>
       </th>
       <th>
-        <strong>Comision</strong>
+        <strong>tiempo</strong>
       </th>
     </tr>
-    {% for tecnologia in tecnologias %}
+    {% for servicio in servicios %}
     <tr>
-      <td>{{tecnologias.nombre}}</td>
-      <td>{{tecnologias.version}}</td>
+      <td>{{servicios.nombre}}</td>
+      <td>{{servicios.version}}</td>
     </tr>
     {% endfor %}
   </tbody>
