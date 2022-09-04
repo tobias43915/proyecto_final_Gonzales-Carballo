@@ -7,7 +7,7 @@ from django.template import Template,Context, loader
 from AppsServicios.models import Tecnologias
 from AppsServicios.models import Contactos
 from AppsServicios.models import Servicios
-#from .AppsServicios.forms import NuevaTecnologia
+
 
 #Views para el inicio
 
@@ -15,15 +15,23 @@ def inicio(request):
 
     return render(request, "AppsServicios/inicio.html")
 
+    #Lista de tecnologias
+
+def listar_tecnologias(request):
+    queryset = Tecnologias.objects.all()
+    diccionario={'AppsServicios': queryset}
+    plantilla = loader.get_template('lista_tecnologias.html')
+    documento_html = plantilla.render(diccionario)
+       
+    return HttpResponse(documento_html)
+
 def contactos(request):
 
     return render(request, "AppsServicios/contactos.html")
 
-    #Lista de tecnologias
-
 def tecnologia(request):
     Tecnologia = Tecnologias.objects.all()    
-    return render(request, "AppsServicios/lista_tecnologia.html")
+    return render(request, "AppsServicios/lista_tecnologias.html")
 
 def tecnologia_formulario(request):
 
