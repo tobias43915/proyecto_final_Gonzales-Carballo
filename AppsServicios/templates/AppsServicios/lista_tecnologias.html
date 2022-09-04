@@ -1,15 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Lista de tecnologias:</h1>
+{% extends "AppCoder/plantilla_base.html" %}
+
+{% block style_block %}
+<style>
+  table.coder-table {
+    border:3px solid;
+  }
+  th,
+  td {
+    border:1px solid;
+    padding:5px 10px;
+  }
+</style>
+{% endblock style_block %}
+
+{% block contenido_base %}
+
+<h1>tecnologias</h1>
+<a href=>Crear tecnologia!</a>
+<br>
+<a href=>Buscar tecnologia</a>
+
+<br><br>
+<h3>tecnologias:</h3>
+
+<table class="coder-table">
+  <tbody>
+    <tr>
+      <th>
+        <strong>Nombre</strong>
+      </th>
+      <th>
+        <strong>Comision</strong>
+      </th>
+    </tr>
+    {% for tecnologias in tecnologiass %}
+    <tr>
+      <td>{{tecnologiass.nombre}}</td>
+      <td>{{tecnologiass.version}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock contenido_base %}
+
+
+
+<!--{% extends "AppsServicios/plantilla_base.html" %}
+
+{% block contenido_base %}
+
+Lista de tecnologias:
     {% for tecnologias in AppsServicios %}
     <p>{{ tecnologias.nombre }}</p>
     {% endfor %}
-</body>
-</html>
+
+{% endblock contenido_base %}

@@ -16,10 +16,9 @@ Including another URLconf
 from ast import Import
 from django.contrib import admin
 from django.urls import path,include
-from AppsServicios.views import inicio
+#from AppsServicios.views import inicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/',inicio),
-    path ('tecnologias/',include ('AppsServicios.urls'))
+    path ('app-servicios/',include ('AppsServicios.urls')),
 ]
