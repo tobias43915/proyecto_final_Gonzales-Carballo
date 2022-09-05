@@ -2,11 +2,28 @@
 
 {% block contenido_base %}
 
-<h1>Lista de tecnologias</h1>
-
-<a href="{% url 'tecnologia_formulario' %}">Nueva_Tecnologia</a>
+               <!-- Masthead-->
+               <header class="masthead">
+                <div class="container position-relative">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6">
+                            <div class="text-center text-white">
+                                <!-- Page heading-->
+                                <h1 class="mb-5">"Lista de tecnologias"</h1>
+                                <!-- Signup form-->
+                                <!-- * * * * * * * * * * * * * * *-->
+                                <!-- * * SB Forms Contact Form * *-->
+                                <!-- * * * * * * * * * * * * * * *-->
+                                <!-- This form is pre-integrated with SB Forms.-->
+                                <!-- To make this form functional, sign up at-->
+                                <!-- https://startbootstrap.com/solution/contact-forms-->
+                                <!-- to get an API token!-->
+                                <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
+<a href="{% url 'tecnologia_formulario' %}"><h1>Nueva_Tecnologia</h1></a>
 
 {% endblock contenido_base %}
+
+
 
 <!--   {% for tecnologias in AppsServicios %}
     <p>{{ tecnologias.nombre }}</p>

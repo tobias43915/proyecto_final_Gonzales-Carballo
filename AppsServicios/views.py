@@ -63,7 +63,7 @@ def servicio_formulario(request):
 
 def contacto(request):
     Contacto = Contactos.objects.all()    
-    return render(request, "AppsServicios/lista_contacto.html")
+    return render(request, "AppsServicios/contactos.html")
 
 def contacto_formulario(request):
 
