@@ -40,7 +40,7 @@ def tecnologia_formulario(request):
         tecnologia = Tecnologias(nombre=data_formulario['nombre'], version=data_formulario['version'])
         tecnologia.save()
 
-        return render(request, 'AppsServicios/inicio.html')
+        return render(request, 'AppsServicios/inicio.html',{"exitoso": True})
     else:
         return render(request, 'AppsServicios/form_tecnologias.html')
 
@@ -57,7 +57,7 @@ def servicio_formulario(request):
         servicio = Servicios(nombre=data_formulario['nombre'], tiempo=data_formulario['tiempo'], valor=data_formulario['valor'])
         servicio.save()
 
-        return render(request, 'AppsServicios/inicio.html')
+        return render(request, 'AppsServicios/inicio.html',{"exitoso": True})
     else:
         return render(request, 'AppsServicios/form_servicios.html')
 
@@ -72,6 +72,23 @@ def contacto_formulario(request):
         contacto = Contactos(nombre=data_formulario['nombre'], apellido=data_formulario['apellido'], email=data_formulario['email'])
         contacto.save()
 
-        return render(request, 'AppsServicios/inicio.html')
+        return render(request, 'AppsServicios/inicio.html',{"exitoso": True})
     else:
         return render(request, 'AppsServicios/form_contacto.html')
+
+
+def busqueda_tecnologia_form(request):
+      return render(request, "AppsServicios/form_buscar.html")
+
+
+def buscar(request):
+      if request.GET["tecnologia"]:
+            tecnologia = request.GET["tecnologia"]
+            tecnologia = Tecnologias.objects.filter(tecnologia__icontains=tecnologia)
+            return render(request, "AppsServicios/inicio.html", {'tecnologia': tecnologia})
+      
+      else:
+
+        respuesta= "No ingresaste informacion"
+        
+        return render(request, "AppsServicios/inicio.html", {'respuesta':respuesta})

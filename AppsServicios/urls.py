@@ -11,5 +11,7 @@ urlpatterns =[
     path('crear-tecnologia/',views.tecnologia_formulario, name= "tecnologia_formulario"),
     path('crear-servicio/',views.servicio_formulario, name= "servicio_formulario"),
     path('crear-contacto/',views.contacto_formulario, name= "contacto_formulario"),
+    path('busqueda-tecnologia-form/', views.busqueda_tecnologia_form, name="busqueda_tecnologia_form"),
+    path('buscar-tecnologia/', views.buscar, name="buscar-tecnologia"),
 ]
 
