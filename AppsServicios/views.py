@@ -26,12 +26,12 @@ def listar_tecnologias(request):
     return HttpResponse(documento_html)
 
 def contactos(request):
-
-    return render(request, "AppsServicios/contactos.html")
+    contacto = Contactos.objects.all()   
+    return render(request, "AppsServicios/contactos.html",{'contacto':contacto})
 
 def tecnologia(request):
     Tecnologia = Tecnologias.objects.all()    
-    return render(request, "AppsServicios/lista_tecnologias.html")
+    return render(request, "AppsServicios/lista_tecnologias.html",{'tecnologia':tecnologia})
 
 def tecnologia_formulario(request):
 

@@ -23,4 +23,11 @@
 
 <a href="{% url 'contacto_formulario' %}"><h1>Nuevo_Contacto</h1></a>
 
+<body>
+    <h1>Lista de contactos:</h1>
+    {% for contacto in contactos %}
+    <p>{{contacto.nombre}}</p>
+    {% endfor %}
+</body>
+
 {% endblock contenido_base %}

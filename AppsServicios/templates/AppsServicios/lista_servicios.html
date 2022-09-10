@@ -21,5 +21,9 @@
 
 <a href="{% url 'servicio_formulario' %}"><h1>Nuevo_Servicio</h1></a>
 
+<h1>Lista de servicios:</h1>
+{% for servicio in AppsServicios %}
+<p>{{servicio.nombre}}</p>
+{% endfor %}
 
 {% endblock contenido_base %}
