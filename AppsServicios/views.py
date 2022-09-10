@@ -27,11 +27,11 @@ def listar_tecnologias(request):
 
 def contactos(request):
     contacto = Contactos.objects.all()   
-    return render(request, "AppsServicios/contactos.html",{'contacto':contacto})
+    return render(request, "AppsServicios/contactos.html",{'contactos':contacto})
 
 def tecnologia(request):
     Tecnologia = Tecnologias.objects.all()    
-    return render(request, "AppsServicios/lista_tecnologias.html",{'tecnologia':tecnologia})
+    return render(request, "AppsServicios/lista_tecnologias.html",{'tecnologia':Tecnologia})
 
 def tecnologia_formulario(request):
 
@@ -46,8 +46,8 @@ def tecnologia_formulario(request):
 
 
 def servicio(request):
-    Servicio = Servicios.objects.all()    
-    return render(request, "AppsServicios/lista_servicios.html")
+    servicio = Servicios.objects.all()    
+    return render(request, "AppsServicios/lista_servicios.html",{'servicio':servicio})
 
 
 def servicio_formulario(request):
@@ -62,7 +62,7 @@ def servicio_formulario(request):
         return render(request, 'AppsServicios/form_servicios.html')
 
 def contacto(request):
-    Contacto = Contactos.objects.all()    
+    contacto = Contactos.objects.all()    
     return render(request, "AppsServicios/contactos.html")
 
 def contacto_formulario(request):
