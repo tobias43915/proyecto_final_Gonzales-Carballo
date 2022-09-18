@@ -9,7 +9,8 @@ from django.template import Template,Context, loader
 from AppsServicios.models import Tecnologias
 from AppsServicios.models import Contactos
 from AppsServicios.models import Servicios
-from AppsServicios.forms import TecnologiaFormulario
+from AppsServicios.forms import TecnologiaFormulario,ContactosFormulario
+from AppsServicios.forms import ServicioFormulario
 
 #Views para el inicio
 
@@ -85,8 +86,8 @@ def editar_tecnologia(request, id):
         if formulario.is_valid():
             data = formulario.cleaned_data
 
-            tecnologia.nombre = data['Nombre']
-            tecnologia.version = data['Version']
+            tecnologia.nombre = data['nombre']
+            tecnologia.version = data['version']
             tecnologia.save()
 
             return redirect(reverse('tecnologias'))
@@ -103,33 +104,118 @@ def editar_tecnologia(request, id):
 
 def servicio(request):
     servicio = Servicios.objects.all()    
-    return render(request, "AppsServicios/lista_servicios.html",{'servicio':servicio})
+    borrado = request.GET.get('borrado', None)
+    contexto= {'servicio':servicio}
+    contexto ['borrado'] = borrado
+    return render(request, "AppsServicios/lista_servicios.html",contexto)
+    
+#---------------------form servicio--------------------------
 
 def servicio_formulario(request):
+    if request.method == 'POST':
+        formulario = ServicioFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            servicio = Servicios(nombre=data['nombre'], valor=data['valor'],tiempo=data['tiempo'])
+            servicio.save()
+            return render(request, 'AppsServicios/inicio.html', {"exitoso": True})
+    else:  # GET
+        formulario = ServicioFormulario()  
+    return render(request, 'AppsServicios/form_servicios.html', {"formulario": formulario})
+
+#----------------------------eliminar servicio-----------------
+
+def eliminar_servicio(request, id):
+    servicio = Servicios.objects.get(id=id)
+    borrado_id = servicio.id
+    servicio.delete()
+    url_final = f"{reverse('servicios')}?borrado={borrado_id}"
+    return redirect(url_final)
+#------------------------editar servicios------------------
+
+def editar_servicio(request, id):
+
+    servicio = Servicios.objects.get(id=id)
 
     if request.method == 'POST':
-        data_formulario: Dict = request.POST
-        servicio = Servicios(nombre=data_formulario['nombre'], tiempo=data_formulario['tiempo'], valor=data_formulario['valor'])
-        servicio.save()
+        formulario = ServicioFormulario(request.POST)
 
-        return render(request, 'AppsServicios/inicio.html',{"exitoso": True})
-    else:
-        return render(request, 'AppsServicios/form_servicios.html')
+        if formulario.is_valid():
+            data = formulario.cleaned_data
 
+            servicio.nombre = data['nombre']
+            servicio.valor = data['valor']
+            servicio.tiempo = data['tiempo']
+            servicio.save()
+
+            return redirect(reverse('servicios'))
+
+    else:  # GET
+        inicial = {
+            'nombre': servicio.nombre,
+            'valor': servicio.valor,
+            'tiempo': servicio.tiempo,
+        }
+        formulario = ServicioFormulario(initial=inicial)
+    return render(request, 'AppsServicios/form_servicios.html', {"formulario": formulario})
 
 #---------------------------------views contactos------------------------------------------------------#
 
 def contacto(request):
-    contacto = Contactos.objects.all()    
-    return render(request, "AppsServicios/contactos.html")
+    contacto = Contactos.objects.all()
+    borrado = request.GET.get('borrado', None)
+    contexto= {'contacto':contacto}
+    contexto ['borrado'] = borrado
+    return render(request, "AppsServicios/contactos.html",contexto)
 
 def contacto_formulario(request):
+    if request.method == 'POST':
+        formulario = ContactosFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            contacto = Contactos(nombre=data['nombre'], apellido=data['apellido'],email=data['email'])
+            contacto.save()
+            return render(request, 'AppsServicios/inicio.html', {"exitoso": True})
+    else:  # GET
+        formulario = ContactosFormulario()  
+    return render(request, 'AppsServicios/form_contacto.html', {"formulario": formulario})
+
+#--------------------------------------eliminar contacto------------------
+
+def eliminar_contacto(request, id):
+    contacto = Contactos.objects.get(id=id)
+    borrado_id = contacto.id
+    contacto.delete()
+    url_final = f"{reverse('contactos')}?borrado={borrado_id}"
+    return redirect(url_final)
+
+#----------------editar---------------
+
+def editar_contacto(request, id):
+
+    contacto = Contactos.objects.get(id=id)
 
     if request.method == 'POST':
-        data_formulario: Dict = request.POST
-        contacto = Contactos(nombre=data_formulario['nombre'], apellido=data_formulario['apellido'], email=data_formulario['email'])
-        contacto.save()
+        formulario = ContactosFormulario(request.POST)
 
-        return render(request, 'AppsServicios/inicio.html',{"exitoso": True})
-    else:
-        return render(request, 'AppsServicios/form_contacto.html')
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+
+            contacto.nombre = data['nombre']
+            contacto.apellido = data['apellido']
+            contacto.email = data['email']
+            contacto.save()
+
+            return redirect(reverse('contactos'))
+
+    else:  # GET
+        inicial = {
+            'nombre': contacto.nombre,
+            'apellido': contacto.apellido,
+            'apellido': contacto.email,
+        }
+        formulario = ContactosFormulario(initial=inicial)
+    return render(request, 'AppsServicios/form_contacto.html', {"formulario": formulario})
+

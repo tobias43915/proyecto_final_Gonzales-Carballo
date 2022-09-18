@@ -21,13 +21,42 @@
                                 <!-- to get an API token!-->
                                 <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
 
+{% if borrado %}
+
+<div class="eliminado">Fue borrado exitosamente el contacto Id: {{ borrado }}</div>
+
+{% endif %}
+
 <a href="{% url 'contacto_formulario' %}"><h1>Nuevo_Contacto</h1></a>
 
 <body>
+    <section class="tabla text-center">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+              </tr>
+            </thead>
+
+    {% for contacto in contacto %}
+    <tr>
+    <td>{{contacto.nombre}}</td>
+    <td>{{contacto.apellido}}</td>
+    <td>{{contacto.email}}</td>
+    <td><a href="{% url 'editar_contacto' contacto.id %}">Editar</a></td>
+    <td><a href="{% url 'eliminar_contacto' contacto.id %}">Eliminar</a></td>
     
-    {% for contacto in contactos %}
-    <p>{{contacto.nombre}}</p>
+</tr>
     {% endfor %}
+
+</tbody>    
+</table>
+</section>
 </body>
 
 {% endblock contenido_base %}
