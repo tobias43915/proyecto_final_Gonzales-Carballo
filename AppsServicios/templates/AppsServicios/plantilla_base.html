@@ -45,9 +45,9 @@
                             {% if user.is_authenticated %}
                             <p style="color: rgb(255, 255, 255); text-decoration: none; margin-right: 10px; margin-top: 7px;">Bienvenido/a {{user.username}}  </p>
                             <img src="{{ url }}" height="40px" alt="Avatar">
-                                <li class="btn btn-primary" disabled ><a style="color: rgb(255, 255, 255); text-decoration: none" href="{% url 'inicio' %}">LOGOUT</a></li>
+                                <li class="btn btn-primary" disabled ><a style="color: rgb(255, 255, 255); text-decoration: none" href="{% url 'logout' %}">LOGOUT</a></li>
                             {% else %}
-                                <li class="btn btn-primary" disabled ><a style="color: rgb(255, 255, 255); text-decoration: none" href="{% url 'inicio' %}">LOGIN</a></li>
+                                <li class="btn btn-primary" disabled ><a style="color: rgb(255, 255, 255); text-decoration: none" href="{% url 'login' %}">LOGIN</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://www.zonamovilidad.es/fotos/2/tecnologia-telecomunicaciones-2019.jpg" alt="..." /></div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="rounded-circle" src="https://www.zonamovilidad.es/fotos/2/tecnologia-telecomunicaciones-2019.jpg" height="400"alt="..." /></div>
                     </div>
                 </div>
             </header>
@@ -143,7 +143,7 @@
                     <div class="col-auto">
                         <a class="link-light small" href="{% url 'inicio' %}">Inicio</a>
                         <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="{% url 'inicio' %}">Nosotros</a>
+                        <a class="link-light small" href="{% url 'acerca_appsservices' %}">Nosotros</a>
                     </div>
                 </div>
             </div>

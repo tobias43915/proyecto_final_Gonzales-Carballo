@@ -2,6 +2,7 @@
 from django.urls import path
 from AppsServicios import views
 #from AppsServicios import listar_tecnologias
+from django.contrib.auth.views import LogoutView
 
 #URLs Generales
 urlpatterns =[
@@ -9,6 +10,9 @@ urlpatterns =[
     path('',views.inicio, name = "inicio"),
     path('acerca-appsservices/',views.Acerca_nosotros,name="acerca_appsservices"),
     path('contacto-por-email/',views.contacto_por_email,name="contacto_emails"),
+    path('register/',views.Register,name="register"),
+    path('login/',views.Loginview, name = "login"),
+    path('Logout/', LogoutView.as_view(template_name='AppsServicios/logout.html'), name = "logout"),
 
 #Urls Tecnologias
 

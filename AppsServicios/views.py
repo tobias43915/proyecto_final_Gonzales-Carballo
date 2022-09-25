@@ -19,6 +19,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DeleteView
+from django.contrib.auth.views import LogoutView
 
 #Views para el inicio
 
@@ -47,7 +48,7 @@ def tecnologia(request):
     contexto= {'tecnologia':tecnologia}
     contexto ['borrado'] = borrado
     return render(request, "AppsServicios/lista_tecnologias.html",contexto)
-
+@login_required
 def tecnologia_formulario(request):
     if request.method == 'POST':
         formulario = TecnologiaFormulario(request.POST)
@@ -78,7 +79,7 @@ def buscar(request):
         return render(request, "AppsServicios/inicio.html", {'respuesta':respuesta})
 
 #-------------------------------------------nuevo 1709 elimina tecno-----------------------
-
+@login_required
 def eliminar_tecnologia(request, id):
     tecnologia = Tecnologias.objects.get(id=id)
     borrado_id = tecnologia.id
@@ -87,7 +88,7 @@ def eliminar_tecnologia(request, id):
     return redirect(url_final)
 
 #E-----------------------------ditar las tecnologias 1709----------------------------------------
-
+@login_required
 def editar_tecnologia(request, id):
 
     tecnologia = Tecnologias.objects.get(id=id)
@@ -122,7 +123,7 @@ def servicio(request):
     return render(request, "AppsServicios/lista_servicios.html",contexto)
     
 #---------------------form servicio--------------------------
-
+@login_required
 def servicio_formulario(request):
     if request.method == 'POST':
         formulario = ServicioFormulario(request.POST)
@@ -137,7 +138,7 @@ def servicio_formulario(request):
     return render(request, 'AppsServicios/form_servicios.html', {"formulario": formulario})
 
 #----------------------------eliminar servicio-----------------
-
+@login_required
 def eliminar_servicio(request, id):
     servicio = Servicios.objects.get(id=id)
     borrado_id = servicio.id
@@ -145,7 +146,7 @@ def eliminar_servicio(request, id):
     url_final = f"{reverse('servicios')}?borrado={borrado_id}"
     return redirect(url_final)
 #------------------------editar servicios------------------
-
+@login_required
 def editar_servicio(request, id):
 
     servicio = Servicios.objects.get(id=id)
@@ -180,7 +181,7 @@ def contacto(request):
     contexto= {'contacto':contacto}
     contexto ['borrado'] = borrado
     return render(request, "AppsServicios/contactos.html",contexto)
-
+@login_required
 def contacto_formulario(request):
     if request.method == 'POST':
         formulario = ContactosFormulario(request.POST)
@@ -195,7 +196,7 @@ def contacto_formulario(request):
     return render(request, 'AppsServicios/form_contacto.html', {"formulario": formulario})
 
 #--------------------------------------eliminar contacto------------------
-
+@login_required
 def eliminar_contacto(request, id):
     contacto = Contactos.objects.get(id=id)
     borrado_id = contacto.id
@@ -204,7 +205,7 @@ def eliminar_contacto(request, id):
     return redirect(url_final)
 
 #----------------editar---------------
-
+@login_required
 def editar_contacto(request, id):
 
     contacto = Contactos.objects.get(id=id)
@@ -259,3 +260,39 @@ def contacto_por_email(request):
             return render(request, "AppsServicios/contacto_email.html")
 
 
+#----------------------------Registro de usuario------------------------------------------
+
+def Register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            form.save()
+            return render(request, "AppsServicios/Inicio.html", {"mensaje": f'Usuario {username} creado'})
+
+    else:
+        form = UserCreationForm()
+
+    return render(request, "AppsServicios/registro.html", {"formulario": form})
+
+#---------------------------------------------Login--------------------------------------
+def Loginview(request):
+
+    if request.method == 'POST':
+        formulario = AuthenticationForm(request, data=request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            usuario = data["username"]
+            psw = data["password"]
+            user = authenticate(username=usuario, password=psw)
+            if user:
+                login(request, user)
+                return render(request, "AppsServicios/inicio.html", {"mensaje": 'Bienvenido/a {usuario}'})
+            else:
+                return render(request, "AppsServicios/inicio.html", {"mensaje": 'Datos incorrectos'})
+
+        return render(request, "AppsServicios/inicio.html")
+
+    else:
+        formulario = AuthenticationForm()
+    return render(request, "AppsServicios/login.html", {"formulario": formulario})
