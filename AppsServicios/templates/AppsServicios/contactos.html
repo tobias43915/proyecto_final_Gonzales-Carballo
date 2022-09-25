@@ -1,62 +1,66 @@
+{% extends "AppsServicios/plantilla_base_2.html" %}
 
-{% extends "AppsServicios/plantilla_base.html" %}
-
-{% block contenido_base %}
-
-               <!-- Masthead-->
-               <header class="masthead">
-                <div class="container position-relative">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-6">
-                            <div class="text-center text-white">
-                                <!-- Page heading-->
-                                <h1 class="mb-5">"Lista de contactos"</h1>
-                                <!-- Signup form-->
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- * * SB Forms Contact Form * *-->
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- This form is pre-integrated with SB Forms.-->
-                                <!-- To make this form functional, sign up at-->
-                                <!-- https://startbootstrap.com/solution/contact-forms-->
-                                <!-- to get an API token!-->
-                                <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
+{% block blockname %}
 
 {% if borrado %}
 
 <div class="eliminado">Fue borrado exitosamente el contacto Id: {{ borrado }}</div>
 
-{% endif %}
-
-<a href="{% url 'contacto_formulario' %}"><h1>Nuevo_Contacto</h1></a>
+{% endif %}   
 
 <body>
-    <section class="tabla text-center">
-        <table class="table table-bordered">
-            <thead>
-              <tr>
+  <br>
+  <p class="text-center"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://watermark.lovepik.com/photo/40150/2130.jpg_wh1200.jpg"alt="..." /></p>
+  <hr>
+  <br>
+  <h1 class="text-center"> PRINCIPALES CONTACTOS </h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p>Contactos </p>
 
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Email</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Eliminar</th>
-              </tr>
-            </thead>
+  <center>
+      
+      <table class="table table-striped">
+          <tr>
+            <th>ID</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Mail</th>
+              <th>Editar ò Eliminar</th>
 
-    {% for contacto in contacto %}
-    <tr>
-    <td>{{contacto.nombre}}</td>
-    <td>{{contacto.apellido}}</td>
-    <td>{{contacto.email}}</td>
-    <td><a href="{% url 'editar_contacto' contacto.id %}">Editar</a></td>
-    <td><a href="{% url 'eliminar_contacto' contacto.id %}">Eliminar</a></td>
-    
-</tr>
-    {% endfor %}
+          </tr>
+          {% for contacto in contacto %}
+          <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{contacto.nombre}}</td>
+              <td>{{contacto.apellido}}</td>
+              <td>{{contacto.email}}</td>
 
-</tbody>    
-</table>
-</section>
+              <td>
+              
+                  <a style="color: black; text-decoration: none" href="{% url 'editar_contacto' contacto.id %}">Editar</a> |
+                  <a style="color: black; text-decoration: none" href="{% url 'eliminar_contacto' contacto.id %}">Eliminar</a> 
+                    
+              </td>
+              
+          </tr>
+              {% endfor %}
+      </table>
+  </center>
+
+  <p> Para agregar un nuevo servicio, click  <a style="text-decoration: none;" href="{% url 'contacto_formulario' %}" class="btn btn-outline-primary">AQUI</a> </p>
+  <hr>
+ 
+  <h1 class="text-center"><a href="{% url 'inicio' %}" 
+    class="btn btn-outline-primary" > VOLVER</a href ="{% url 'inicio' %}"></h1>
+  
+  <hr><hr>  
 </body>
+{% endblock blockname %} 
+</html>
 
-{% endblock contenido_base %}
+
+<!------------------------------------------------------------>
+

@@ -1,65 +1,52 @@
-{% extends "AppsServicios/plantilla_base.html" %}
+{% extends "AppsServicios/plantilla_base_2.html" %} 
 {% load static %}
-
 
 {% block blockname %}
 <body">
-        <br>
-        <p class="text-center"><img class="img-fluid rounded mb-5 mb-lg-0" src="http://127.0.0.1:8000/media/imagenes/Membrete_Coder-Pharma.png" alt="..." /></p>
-        <hr><hr>
-        <!-- Sección QUIENES SOMOS -->
+
+        <!-- Sección como nos conocen -->
         <section class="py-5 bg-light">
             <div class="container px-5 my-5">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="http://127.0.0.1:8000/media/imagenes/Acerca_de_Nosotros_-_Quienes_Somos.png" alt="..." /></div>
+                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="http://www.nubit.es/wp-content/uploads/2016/04/tecnologia-tactil.png" alt="..." /></div>
                     <div class="col-lg-6">
-                        <h2 class="fw-bolder">¿Quienes somos...?</h2>
-                        <p class="lead fw-normal text-muted mb-0">Somos una compañía con años de trayectoria en la provisión de medicamentos, a farmacias, hospitales, droguerías y sanatorios de todo el país.
-                            Nuestra vocación por el servicio y la búsqueda de la excelencia, son nuestros pilares donde basamos cada uno de los procesos para alcanzar la máxima satisfacción del cliente.</p>                      
+                        <h2 class="fw-bolder">¿Como nos conocen?</h2>
+                        <p class="lead fw-normal text-muted mb-0">Somos una compañía con años de trayectoria en el desarrollo de servicios tecnologicos.
+                            Nuestra principal mision ayudar a nuestros clientes a implementar su mejor desarrollo automatizado.</p>                      
                 </div>
             </div>
         </section>
         <hr><hr>
-        <!-- Sección PRODUCTOS-->
+        <!-- Sección soporte-->
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="http://127.0.0.1:8000/media/imagenes/Acerca_de_Nosotros_-_Medicamentos.png" alt="..." /></div>
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://www.bitmag.com.br/wp-content/uploads/2013/11/tech-and-innovation-e1384887416643-600x513.jpg" alt="..." /></div>
                         <div class="col-lg-6">
-                                <h2 class="fw-bolder">Nuestros Productos</h2>
-                                <p class="lead fw-normal text-muted mb-0">Contamos con el más amplio y diversificado stock para cubrir todas las necesidades de nuestros clientes. Productos estuchados, productos médicos, accesorios para el canal farmacia, como medicamentos hospitalarios en todas las presentaciones y soluciones parenterales para los canales institucionales..</p>
+                                <h2 class="fw-bolder">Nuestro Soporte</h2>
+                                <p class="lead fw-normal text-muted mb-0">Contamos con servicios de desarrollos en automatizacion basados en la Robotica y diferentes lenguajes de programaciòn</p>
                         </div>
                 </div>
             </div>
         </section>
         <hr><hr>
-        <!-- Sección LOGISTICA-->
-        <section class="py-5 bg-light" id="scroll-target">
-            <div class="container px-5 my-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="http://127.0.0.1:8000/media/imagenes/Acerca_de_Nosotros_-_Logistica_j6vG2B5.png" height="640px" alt="Imagen de Pablo Figueroa" /></div>
-                    <div class="col-lg-6">
-                            <h2 class="fw-bolder">Logística</h2>
-                            <p class="lead fw-normal text-muted mb-0">Aseguramos que nuestro servicio se cumpla en tiempo y forma mediante una amplia flota de camionetas destinada a cubrir las necesidades de logística y contamos con importantes convenios con empresas en logística para nuestras entregas al interior..</p>
-                    </div>
-            </div>
-        </section>
+       
     <hr><hr>
     <p>NUESTRO EQUIPO</p>
     <li>
-        <button style="box-shadow: 0 12px 16px 0 rgb(0, 0, 0), 0 17px 50px 0 rgba(0, 0, 0, 0); background-color: rgb(76, 76, 76); font-size: 20px;"><a style="color: whitesmoke; cursor: pointer; text-decoration: none;"  href="{% url '06_Empleados' %}"> PERSONAL</a></button>
+        <button style="box-shadow: 0 12px 16px 0 rgb(83, 6, 88), 0 17px 50px 0 rgba(0, 0, 0, 0); background-color: rgb(130, 11, 11); font-size: 20px;"><a style="color: whitesmoke; cursor: pointer; text-decoration: none;"  href="{% url 'contactos' %}"> Contactos</a></button>
     </li>
     <br>
     <hr>
-    <p>PROVEEDORES</p>
+    <p>SERVICIOS</p>
     <li>
-        <button style="box-shadow: 0 12px 16px 0 rgb(0, 0, 0), 0 17px 50px 0 rgba(0, 0, 0, 0.008); background-color: rgb(76, 76, 76); font-size: 20px;"><a style="color: whitesmoke; cursor: pointer; text-decoration: none;" href="{% url '07_Proveedores' %}"> PROVEEDORES</a></button>
+        <button style="box-shadow: 0 12px 16px 0 hsl(274, 76%, 15%), 0 17px 50px 0 rgba(129, 3, 3, 0.008); background-color: rgb(120, 17, 17); font-size: 20px;"><a style="color: whitesmoke; cursor: pointer; text-decoration: none;" href="{% url 'servicios' %}"> Servicios</a></button>
     </li>
     <br>
     <hr>
-    <p>CLIENTES</p>
+    <p>TECNOLOGIAS</p>
     <li>
-        <button style="box-shadow: 0 12px 16px 0 rgb(0, 0, 0), 0 17px 50px 0 rgba(0, 0, 0, 0.008); background-color: rgb(76, 76, 76); font-size: 20px;"><a style="color: whitesmoke; cursor: pointer; text-decoration: none;" href="{% url '08_Clientes' %}"> CLIENTES</a></button>
+        <button style="box-shadow: 0 12px 16px 0 rgb(68, 10, 123), 0 17px 50px 0 rgba(0, 0, 0, 0.008); background-color: rgb(110, 8, 8); font-size: 20px;"><a style="color: whitesmoke; cursor: pointer; text-decoration: none;" href="{% url 'tecnologias' %}"> Tecnologias</a></button>
     </li>
     <br>
 </body>

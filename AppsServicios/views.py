@@ -16,8 +16,12 @@ from AppsServicios.forms import ServicioFormulario
 
 def inicio(request):
 
-    return render(request, "AppsServicios/inicio.html")
+    return render(request, "AppsServicios/plantilla_base.html")
+#Views de acerca de nosotros 
 
+def Acerca_nosotros(request):
+
+    return render(request, "AppsServicios/Acerca_AppsServices.html")
 #------------------------------------------Views tecnologias------------------------------#
 
 def listar_tecnologias(request):

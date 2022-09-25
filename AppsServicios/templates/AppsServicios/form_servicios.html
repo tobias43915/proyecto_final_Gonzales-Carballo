@@ -1,7 +1,7 @@
 
-{% extends "AppsServicios/plantilla_base.html" %}
+{% extends "AppsServicios/plantilla_base_2.html" %}
 
-{% block contenido_base %}
+{% block blockname %}
 
 <form method="post">
     {% csrf_token %}
@@ -20,4 +20,4 @@
     <input type="submit"name="Enviar" />
 </form>
 
-{% endblock contenido_base %}
+{% endblock blockname %} 

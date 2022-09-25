@@ -6,6 +6,7 @@ from AppsServicios import views
 urlpatterns =[
     
     path('',views.inicio, name = "inicio"),
+    path('acerca-appsservices/',views.Acerca_nosotros,name="acerca_appsservices"),
 
 #Urls Tecnologias
 

@@ -1,19 +1,20 @@
-{% extends "AppsServicios/plantilla_base.html" %}
+{% extends "AppsServicios/plantilla_base_2.html" %}
 
-{% block style_block %}
+{% block blockname %}
 
 {% if exitoso %}
-<div style="background-color:antiquewhite;"><h4>La información fue agregada!!!</h4></div>
+<div style="background-color:antiquewhite;"><h4>La información fue agregada!!!</h4> </div>
+
 {% endif %}
 
                 <!-- Masthead-->
-                <header class="masthead">
-                    <div class="container position-relative">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-6">
-                                <div class="text-center text-white">
+                <!--<header class="masthead">
+                   <div class="container position-relative">
+                      <div class="row justify-content-center">
+                          <div class="col-xl-6">
+                               <div class="text-center text-white">
                                     <!-- Page heading-->
-                                    <h1 class="mb-5">Bienvenidos a la empresa de servicios tecnologicos "Apps Services"</h1>
+                                   <!-- <h1 class="mb-5">Bienvenidos a la empresa de servicios tecnologicos "Apps Services"</h1>
                                     <!-- Signup form-->
                                     <!-- * * * * * * * * * * * * * * *-->
                                     <!-- * * SB Forms Contact Form * *-->
@@ -23,5 +24,11 @@
                                     <!-- https://startbootstrap.com/solution/contact-forms-->
                                     <!-- to get an API token!-->
                                     <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                
-{% endblock style_block %}
+
+                                       <hr>
+ 
+  <h1 class="text-center"><a href="{% url 'inicio' %}" 
+    class="btn btn-outline-primary" > VOLVER</a href ="{% url 'inicio' %}"></h1>
+  
+  <hr><hr>
+{% endblock blockname %} 

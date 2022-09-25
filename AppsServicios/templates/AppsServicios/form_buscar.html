@@ -1,6 +1,6 @@
 {% extends "AppsServicios/plantilla_base.html" %}
 
-{% block contenido_base %}
+{% block blockname %}
 <form method="GET">
   {% csrf_token %}
   <span>Tecnologia:
@@ -8,6 +8,6 @@
   </span>
   <input type="submit" value="Buscar" />
 </form>
-{% endblock contenido_base %}
+{% block blockname %}
 
 "{% url 'tecnologia_formulario' %}"
