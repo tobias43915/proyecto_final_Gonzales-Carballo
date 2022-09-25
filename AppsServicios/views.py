@@ -11,6 +11,14 @@ from AppsServicios.models import Contactos
 from AppsServicios.models import Servicios
 from AppsServicios.forms import TecnologiaFormulario,ContactosFormulario
 from AppsServicios.forms import ServicioFormulario
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.core.mail import EmailMessage
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.views.generic import DeleteView
 
 #Views para el inicio
 
@@ -222,4 +230,32 @@ def editar_contacto(request, id):
         }
         formulario = ContactosFormulario(initial=inicial)
     return render(request, 'AppsServicios/form_contacto.html', {"formulario": formulario})
+
+
+
+#------------------------------------------- Envío de Email--------------------------------------------
+def contacto_por_email(request):
+    if request.method == "POST":
+        name = request.POST["nombre"]
+        email = request.POST["email"]
+        subject = request.POST["asunto"]
+        message = request.POST["mensaje"]
+
+        template = render_to_string('AppsServicios/Email.html', {'name': name, 'email': email, 'message': message})
+        
+        email = EmailMessage(subject, template, settings.EMAIL_HOST_USER, ['Apps_Services@gmail.com'])
+
+        email.fail_silently = False
+        email.send()
+        
+
+        messages.success(request, 'Se ha enviado su consulta')
+        return redirect("AppsServicios/contacto_email.html")
+    else:
+        #try:
+            #avatar = Avatar.objects.get(usuario = request.user.id)
+         #   return render(request, "09 - Contacto.html", {"url": avatar.imagen.url})
+        #except: render
+            return render(request, "AppsServicios/contacto_email.html")
+
 

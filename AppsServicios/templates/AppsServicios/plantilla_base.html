@@ -39,7 +39,7 @@
 
                                 <div class="container">
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'tecnologias' %}"> | Contacto | </a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'contacto_emails' %}"> | Contacto | </a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'acerca_appsservices' %}">Acerca de Coder-Pharma | </a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Directorio | </a></li>
                             {% if user.is_authenticated %}
@@ -62,10 +62,10 @@
                                 <h1 class="display-5 fw-bolder text-white mb-2">Bienvenido a
                                     <br>Apps Services
                                 </h1>
-                                <p class="lead fw-normal text-white-50 mb-4">Esta es una empresa que se encarga de brindar servicios tecnologicos a LATAM, la cual es creada para la presentaciòn del proyecto final de PYTHON en Coder- House de Yermary Gonzalez y Tobias Cabello.</p>
+                                <p class="lead fw-normal text-white-50 mb-4">Esta es una empresa que se encarga de brindar servicios tecnologicos a LATAM, la cual es creada para la presentaciòn del proyecto final de PYTHON en Coder- House de Yermary Gonzalez y Tobias Carballo.</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Funcionalidades</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'inicio' %}">Sobre Nosotros</a>
+                                    <a class="btn btn-outline-light btn-lg px-4" href="{% url 'acerca_appsservices' %}">Sobre Nosotros</a>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
 
                                 <div class="col mb-5 mb-md-0 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                    <a class="h5" style="color: black; text-decoration: none" href="{% url 'contactos' %} ">Contactos</a>
+                                    <a class="h5" style="color: rgb(135, 13, 13); text-decoration: none" href="{% url 'contactos' %} ">Contactos</a>
                                     <p class="mb-0">
                                         Contamos con más de 3.000 presentaciones de productos y accesorios con la mejor relación precio/servicio del mercado.
                                         <br>
@@ -96,7 +96,7 @@
 
                                 <div class="col mb-5 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                    <a class="h5" style="color: black; text-decoration: none" href="{% url 'servicios' %}">Servicios</a>
+                                    <a class="h5" style="color: rgb(135, 13, 13); text-decoration: none" href="{% url 'servicios' %}">Servicios</a>
                                     <p class="mb-0">
                                         En esta secciòn podra encontrar los servicios que brindamos. 
                                     </p>
@@ -104,7 +104,7 @@
 
                                 <div class="col h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <a class="h5" style="color: black; text-decoration: none" href="{% url 'tecnologias' %}">Tecnologias</a>
+                                    <a class="h5" style="color: rgb(135, 13, 13); text-decoration: none" href="{% url 'tecnologias' %}">Tecnologias</a>
                                     <p class="mb-0">
                                         Brindamos un acertado asesoramiento sobre las tecnologias que existen en el mercado respecto a programaciòn y sistemas. 
                                     </p>
@@ -121,13 +121,13 @@
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-10 col-xl-7">
                             <div class="text-center">
-                                <div class="fs-4 mb-4 fst-italic">"“Las grandes organizaciones requieren un alto nivel de compromiso por parte de las personas involucradas”."</div>
+                                <div class="fs-4 mb-4 fst-italic">"“El emprendedor del futuro es, ante todo, un creador de productos, y su base de conocimientos es multidisciplinar.”."</div>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <img class="rounded-circle me-3" src="https://www.abc.es/xlsemanal/wp-content/uploads/sites/5/2022/05/bill-gates-antivacunas-jefrey-epstein-50.jpg" height="100" alt="..." />
+                                    <img class="rounded-circle me-3" src="https://i.pinimg.com/originals/2c/e8/cb/2ce8cbbd49a56a2ccaa366823a6ce7f0.jpg" height="100" alt="..." />
                                     <div class="fw-bold">
-                                       Bill Gates
+                                       Steve Jobs
                                         <span class="fw-bold text-primary mx-1">/</span>
-                                        Creador y Fundador de MICROSOFT
+                                        Creador y Fundador de Apple
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
         <footer class="bg-dark py-4 mt-auto">
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Coder Pharma 2022 - Yermary Gonzalez</div></div>
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; CoderHouse 2022 - Yermary Gonzalez</div></div>
                     <div class="col-auto">
                         <a class="link-light small" href="{% url 'inicio' %}">Inicio</a>
                         <span class="text-white mx-1">&middot;</span>

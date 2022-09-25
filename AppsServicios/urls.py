@@ -3,10 +3,12 @@ from django.urls import path
 from AppsServicios import views
 #from AppsServicios import listar_tecnologias
 
+#URLs Generales
 urlpatterns =[
     
     path('',views.inicio, name = "inicio"),
     path('acerca-appsservices/',views.Acerca_nosotros,name="acerca_appsservices"),
+    path('contacto-por-email/',views.contacto_por_email,name="contacto_emails"),
 
 #Urls Tecnologias
 
