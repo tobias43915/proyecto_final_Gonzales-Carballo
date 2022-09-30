@@ -63,20 +63,22 @@ def tecnologia_formulario(request):
     return render(request, 'AppsServicios/form_tecnologias.html', {"formulario": formulario})
 
 #-------------------------busqueda---------------------------------
-def busqueda_tecnologia_form(request):
-      return render(request, "AppsServicios/form_buscar.html")
+#def busqueda_tecnologia_form(request):
+ #     return render(request, "AppsServicios/resultado_busqueda_tecnologia.html")
+#form_buscar
 
-def buscar(request):
-      if request.GET["tecnologia"]:
-            tecnologia = request.GET["tecnologia"]
-            tecnologia = Tecnologias.objects.filter(tecnologia__icontains=tecnologia)
-            return render(request, "AppsServicios/inicio.html", {'tecnologia': tecnologia})
+def buscartecnologia(request):
+      if request.GET["nombre"]:
+            nombre = request.GET["nombre"]
+            tecnologia = Tecnologias.objects.filter(nombre__icontains=nombre)
+            return render(request, "AppsServicios/resultado_busqueda_tecnologia.html", {'tecnologia':tecnologia,"nombre": nombre})
       
       else:
+        resultado= "No hay resultados"
 
-        respuesta= "No ingresaste informacion"
+       # return HttpResponse(resultado)
         
-        return render(request, "AppsServicios/inicio.html", {'respuesta':respuesta})
+        return render(request, "AppsServicios/inicio.html", {'resultado':resultado})
 
 #-------------------------------------------nuevo 1709 elimina tecno-----------------------
 @login_required
@@ -103,7 +105,7 @@ def editar_tecnologia(request, id):
             tecnologia.version = data['version']
             tecnologia.save()
 
-            return redirect(reverse('tecnologias'))
+            return redirect('tecnologias')
 
     else:  # GET
         inicial = {
@@ -244,12 +246,11 @@ def contacto_por_email(request):
 
         template = render_to_string('AppsServicios/Email.html', {'name': name, 'email': email, 'message': message})
         
-        email = EmailMessage(subject, template, settings.EMAIL_HOST_USER, ['Apps_Services@gmail.com'])
+        email = EmailMessage(subject, template, settings.EMAIL_HOST_USER, ['app_services@gmail.com'])
 
         email.fail_silently = False
         email.send()
         
-
         messages.success(request, 'Se ha enviado su consulta')
         return redirect("AppsServicios/contacto_email.html")
     else:

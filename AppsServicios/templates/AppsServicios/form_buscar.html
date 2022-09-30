@@ -1,13 +1,13 @@
-{% extends "AppsServicios/plantilla_base.html" %}
+{% extends "AppsServicios/plantilla_base_2.html" %}
 
 {% block blockname %}
 <form method="GET">
   {% csrf_token %}
   <span>Tecnologia:
-    <input type="integer" name="tecnologia">
+    <input type="integer" name="nombre">
   </span>
   <input type="submit" value="Buscar" />
 </form>
-{% block blockname %}
+{% endblock blockname %}
 
-"{% url 'tecnologia_formulario' %}"
+<!---"{% url 'tecnologia_formulario' %}"

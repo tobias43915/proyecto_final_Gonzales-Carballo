@@ -14,13 +14,19 @@
   <hr>
   <br>
   <h1 class="text-center"> PRINCIPALES TECNOLOGIAS </h1>
+
   <br>
   <br>
   <br>
   <br>
   <p>Tecnologias </p>
-
   <center>
+  <h4 class="text-center"> Buscar tecnologia </h4>
+        <form action="{% url 'buscar_tecnologia' %}" method="GET"> {% csrf_token %}
+          <input type="integer" name="tecnologia">
+  </span>
+  <input type="submit" value="Buscar" />
+</form>
 
       <table class="table table-striped">
           <tr>

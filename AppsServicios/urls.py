@@ -18,8 +18,8 @@ urlpatterns =[
 
     path('tecnologias/',views.tecnologia,name= "tecnologias"),
     path('crear-tecnologia/',views.tecnologia_formulario, name= "tecnologia_formulario"),
-    path('busqueda-tecnologia-form/', views.busqueda_tecnologia_form, name="busqueda_tecnologia_form"),
-    path('buscar-tecnologia/', views.buscar, name="buscar-tecnologia"),
+    #path('busqueda-tecnologia-form/', views.busqueda_tecnologia_form, name="busqueda_tecnologia_form"),
+    path('buscar-tecnologia/', views.buscartecnologia, name="buscar_tecnologia"),
     path('eliminar-tecnologia/<int:id>/', views.eliminar_tecnologia, name="eliminar_tecnologia"),
     path('editar-tecnologia/<int:id>/', views.editar_tecnologia, name="editar_tecnologia"),
     
