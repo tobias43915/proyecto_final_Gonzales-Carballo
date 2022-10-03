@@ -34,11 +34,11 @@ class Contactos(models.Model):
    def __str__(self):
       return f"{self.apellido}, {self.nombre}"
 
-#class Avatar(models.Model):
-    # Vinculo con el usuario
- #   user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    # Subcaperta avatares de media :)
-  #  imagen = models.ImageField(upload_to='avatares', null=True, blank = True)
+class Avatar(models.Model):
+   #Vinculo con el usuario
+   user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+   #Subcaperta avatares de media :)
+   imagen = models.ImageField(upload_to='avatares', null=True, blank = True)
 
-   # def __str__(self):
-    #    return f"Imagen de: {self.user}"
+   def __str__(self):
+      return f"Imagen de: {self.user}"

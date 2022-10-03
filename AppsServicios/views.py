@@ -11,6 +11,8 @@ from AppsServicios.models import Contactos
 from AppsServicios.models import Servicios
 from AppsServicios.forms import TecnologiaFormulario,ContactosFormulario
 from AppsServicios.forms import ServicioFormulario
+from AppsServicios.forms import AvatarFormulario
+from AppsServicios.forms import UserUpdateForm
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -20,7 +22,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DeleteView
 from django.contrib.auth.views import LogoutView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 #Views para el inicio
 
 def inicio(request):
@@ -31,6 +35,10 @@ def inicio(request):
 def Acerca_nosotros(request):
 
     return render(request, "AppsServicios/Acerca_AppsServices.html")
+
+def about(request):
+
+    return render(request, "AppsServicios/about.html")
 #------------------------------------------Views tecnologias------------------------------#
 
 def listar_tecnologias(request):
@@ -68,15 +76,14 @@ def tecnologia_formulario(request):
 #form_buscar
 
 def buscartecnologia(request):
-      if request.GET["nombre"]:
-            nombre = request.GET["nombre"]
-            tecnologia = Tecnologias.objects.filter(nombre__icontains=nombre)
-            return render(request, "AppsServicios/resultado_busqueda_tecnologia.html", {'tecnologia':tecnologia,"nombre": nombre})
-      
-      else:
-        resultado= "No hay resultados"
+    if request.GET["nombre"]:
+        nombre = request.GET["nombre"]
+        tecnologia = Tecnologias.objects.filter(nombre__icontains=nombre)
+        return render(request, "AppsServicios/resultado_busqueda_tecnologia.html", {'tecnologia':tecnologia,'nombre': nombre})
+    else:
+        resultado = "No hay resultados"
 
-       # return HttpResponse(resultado)
+        #return HttpResponse(resultado)
         
         return render(request, "AppsServicios/inicio.html", {'resultado':resultado})
 
@@ -278,7 +285,7 @@ def Register(request):
 
 #---------------------------------------------Login--------------------------------------
 def Loginview(request):
-
+    next_url = request.GET.get('next')
     if request.method == 'POST':
         formulario = AuthenticationForm(request, data=request.POST)
         if formulario.is_valid():
@@ -287,13 +294,39 @@ def Loginview(request):
             psw = data["password"]
             user = authenticate(username=usuario, password=psw)
             if user:
-                login(request, user)
-                return render(request, "AppsServicios/inicio.html", {"mensaje": 'Bienvenido/a {usuario}'})
+                login(request, user=user)
+                if next_url:
+                    return render(request, "AppsServicios/inicio.html", {"mensaje": f'Bienvenido/a {usuario}'})
             else:
                 return render(request, "AppsServicios/inicio.html", {"mensaje": 'Datos incorrectos'})
 
-        return render(request, "AppsServicios/inicio.html")
+        return render(request, "AppsServicios/inicio.html",{"mensaje": "error, formulario"})
 
     else:
         formulario = AuthenticationForm()
     return render(request, "AppsServicios/login.html", {"formulario": formulario})
+
+
+@login_required
+def agregar_avatar(request):
+    if request.method == 'POST':
+
+        form = AvatarFormulario(request.POST, request.FILES) #aquí me llega toda la información del html
+
+        if form.is_valid:   #Si pasó la validación de Django
+            avatar = form.save()
+            avatar.user = request.user
+            avatar.save()
+            return redirect(reverse('inicio'))
+
+    form = AvatarFormulario() #Formulario vacio para construir el html
+    return render(request, "AppsServicios/form_avatar.html", {"form":form})
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    success_url = reverse_lazy('inicio')
+    template_name = 'AppsServicios/form_perfil.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user

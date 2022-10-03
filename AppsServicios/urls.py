@@ -8,8 +8,11 @@ from django.contrib.auth.views import LogoutView
 urlpatterns =[
     
     path('',views.inicio, name = "inicio"),
+    path('about/',views.about,name="about"),
     path('acerca-appsservices/',views.Acerca_nosotros,name="acerca_appsservices"),
     path('contacto-por-email/',views.contacto_por_email,name="contacto_emails"),
+
+#urls para login , registro y cerrar sesion
     path('register/',views.Register,name="register"),
     path('login/',views.Loginview, name = "login"),
     path('Logout/', LogoutView.as_view(template_name='AppsServicios/logout.html'), name = "logout"),
@@ -36,6 +39,10 @@ urlpatterns =[
     path('eliminar-servicio/<int:id>/', views.eliminar_servicio, name="eliminar_servicio"),
     path('editar-servicio/<int:id>/', views.editar_servicio, name="editar_servicio"),
     
+
+    # URLS Perfil
+    path('editar-perfil/', views.ProfileUpdateView.as_view(), name="editar_perfil"),
+    path('agregar-avatar/', views.agregar_avatar, name="agregar_avatar"),
 
 ]
 

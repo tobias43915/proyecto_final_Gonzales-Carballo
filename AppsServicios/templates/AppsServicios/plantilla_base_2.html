@@ -44,12 +44,23 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'contacto_emails' %}"> | Contacto | </a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'acerca_appsservices' %}">Acerca de Apps Services | </a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Directorio | </a></li>
-                            
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About | </a></li>
+
                             {% if user.is_authenticated %}
                                 <p style="color: rgb(255, 255, 255); text-decoration: none; margin-right: 10px; margin-top: 7px;">Bienvenido/a {{user.username}}  </p>
-                                <img src="{% url 'inicio' %}" height="40px" alt="Avatar">
-                                <li class="btn btn-primary" disabled ><a style="color: rgb(255, 255, 255); text-decoration: none" href="{% url 'logout' %}">LOGOUT</a></li>
-                            {% else %}
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="{{ user.avatar.imagen.url }}" width="40px" height="40px" alt="Avatar" />
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <li><button class="dropdown-item" type="button"><a style="color: black ; text-decoration: none" href="{% url 'editar_perfil' %}">Editar Perfil</button></li>
+                                    <li><button class="dropdown-item" type="button"><a style="color: black ; text-decoration: none" href="{% url 'agregar_avatar' %}">Agregar Avatar</a></button></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><button class="dropdown-item" type="button"><a style="color: red ; text-decoration: none" href="{% url 'logout' %}">LOGOUT</a></li>
+                                    </ul>
+                                </div>
+                                
+                                {% else %}
                                 <li class="btn btn-primary" disabled ><a style="color: rgb(255, 255, 255); text-decoration: none" href="{% url 'login' %}">LOGIN</a></li>
                             {% endif %}
 
@@ -71,7 +82,7 @@
                     <div class="col-auto">
                         <a class="link-light small" href="{% url 'inicio' %}">Inicio</a>
                         <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="{% url 'acerca_appsservices' %}">Nosotros</a>
+                        <a class="link-light small" href="{% url 'about' %}">About</a>
                     </div>
                 </div>
             </div>
