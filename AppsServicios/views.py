@@ -81,11 +81,8 @@ def buscartecnologia(request):
         tecnologia = Tecnologias.objects.filter(nombre__icontains=nombre)
         return render(request, "AppsServicios/resultado_busqueda_tecnologia.html", {'tecnologia':tecnologia,'nombre': nombre})
     else:
-        resultado = "No hay resultados"
-
-        #return HttpResponse(resultado)
-        
-        return render(request, "AppsServicios/inicio.html", {'resultado':resultado})
+        resultado = "No hay resultados"        
+        return render(request, "AppsServicios/resultado_busqueda_tecnologia.html", {'resultado':resultado})
 
 #-------------------------------------------nuevo 1709 elimina tecno-----------------------
 @login_required
@@ -182,6 +179,15 @@ def editar_servicio(request, id):
         formulario = ServicioFormulario(initial=inicial)
     return render(request, 'AppsServicios/form_servicios.html', {"formulario": formulario})
 
+def buscarservicio(request):
+    if request.GET["nombre"]:
+        nombre = request.GET["nombre"]
+        servicio = Servicios.objects.filter(nombre__icontains=nombre)
+        return render(request, "AppsServicios/02_Busque_Servicios.html", {'servicio':servicio,'nombre': nombre})
+    else:
+        resultado = "No hay resultados"        
+        return render(request, "AppsServicios/02_Busque_Servicios.html", {'resultado':resultado})
+
 #---------------------------------views contactos------------------------------------------------------#
 
 def contacto(request):
@@ -236,12 +242,20 @@ def editar_contacto(request, id):
         inicial = {
             'nombre': contacto.nombre,
             'apellido': contacto.apellido,
-            'apellido': contacto.email,
+            'email': contacto.email,
         }
         formulario = ContactosFormulario(initial=inicial)
     return render(request, 'AppsServicios/form_contacto.html', {"formulario": formulario})
 
 
+def buscarcontacto(request):
+    if request.GET["nombre"]:
+        nombre = request.GET["nombre"]
+        contacto = Contactos.objects.filter(nombre__icontains=nombre)
+        return render(request, "AppsServicios/03_Busque_Contacto.html", {'contacto':contacto,'nombre': nombre})
+    else:
+        resultado = "No hay resultados"        
+        return render(request, "AppsServicios/03_Busque_Contacto.html", {'resultado':resultado})
 
 #------------------------------------------- Envío de Email--------------------------------------------
 def contacto_por_email(request):

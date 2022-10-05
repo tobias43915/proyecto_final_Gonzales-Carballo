@@ -10,7 +10,7 @@
 
 <body>
   <br>
-  <p class="text-center"><img class="rounded-circle" src="https://watermark.lovepik.com/photo/40150/2130.jpg_wh1200.jpg"height="400"alt="..." /></p>
+  <p class="text-center"><img class="rounded-circle" src="https://rockwellautomation.scene7.com/is/image/rockwellautomation/auto-shutterstock-649320622--photograph-848w477h.5120.jpg"height="400"alt="..." /></p>
   <hr>
   <br>
   <h1 class="text-center"> PRINCIPALES TECNOLOGIAS </h1>
@@ -23,7 +23,7 @@
   <center>
   <h4 class="text-center"> Buscar tecnologia </h4>
         <form action="{% url 'buscar_tecnologia' %}" method="GET"> {% csrf_token %}
-          <input type="integer" name="tecnologia">
+          <input type="integer" name="nombre" />
   </span>
   <input type="submit" value="Buscar" />
 </form>
@@ -59,6 +59,16 @@
   <h1 class="text-center"><a href="{% url 'inicio' %}" 
     class="btn btn-outline-primary" > VOLVER</a href ="{% url 'inicio' %}"></h1>
   
+  </center>
+    <h1 class="text-center"><a href="{% url 'contactos' %}" 
+      class="btn btn-outline-primary" > Ir a Contactos</a href ="{% url 'inicio' %}"></h1>
+    </center>
+
+  </center>
+  <h1 class="text-center"><a href="{% url 'servicios' %}" 
+    class="btn btn-outline-primary" > Ir a Servicios</a href ="{% url 'inicio' %}"></h1>
+  </center>
+ 
   <hr><hr>
 </body>
 {% endblock blockname %} 

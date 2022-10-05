@@ -41,8 +41,8 @@
                             </li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'contacto_emails' %}"> | Contacto | </a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'acerca_appsservices' %}">Acerca de Apps Services | </a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Directorio | </a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About | </a></li>
+                            
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Directorio | </a></li>
                             {% if user.is_authenticated %}
                             <p style="color: rgb(255, 255, 255); text-decoration: none; margin-right: 10px; margin-top: 7px;">Bienvenido/a {{user.username}}  </p>
                             <div class="dropdown">
@@ -83,13 +83,13 @@
                     </div>
                 </div>
             </header>
-            <!-- Info DROGUERIA -->
+            <!-- Info Tecnologia -->
             <section class="py-5" id="features">
                 <div class="container px-5 my-5">
                     <div class="row gx-5">
                         <div class="col-lg-4 mb-5 mb-lg-0">
-                            <h2 class="fw-bolder mb-0">Innovaciòn tecnologica</h2>
-                            <p>Estar en constante actualizaciòn de tecnologias es nuestro valor màs importante.</p>  
+                            <h2 class="fw-bolder mb-0">Innovación tecnologica</h2>
+                            <p>Estar en constante actualización de tecnologias es nuestro valor más importante.</p>  
                         </div>
 
 
@@ -97,7 +97,7 @@
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                                     <a class="h5" style="color: rgb(135, 13, 13); text-decoration: none" href="{% url 'contactos' %} ">Contactos</a>
                                     <p class="mb-0">
-                                        Contamos con más de 3.000 presentaciones de productos y accesorios con la mejor relación precio/servicio del mercado.
+                                        Contamos con productos y accesorios con la mejor relación precio/servicio del mercado.
                                         <br>
                                         <br>
                                         Nuestro plantel de profesionales de amplia experiencia y capacitación permanente están a su disposición para asesorarlo en todo momento.

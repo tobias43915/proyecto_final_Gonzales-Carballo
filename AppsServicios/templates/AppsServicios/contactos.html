@@ -10,7 +10,7 @@
 
 <body>
   <br>
-  <p class="text-center"><img class="rounded-circle" src="https://watermark.lovepik.com/photo/40150/2130.jpg_wh1200.jpg"height="400"alt="..." /></p>
+  <p class="text-center"><img class="rounded-circle" src="https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/12/220/fotolia_2181389_XS.jpg"height="400"alt="..." /></p>
   <hr>
   <br>
   <h1 class="text-center"> PRINCIPALES CONTACTOS </h1>
@@ -19,8 +19,13 @@
   <br>
   <br>
   <p>Contactos </p>
-
-  <center>
+    <center>
+      <h4 class="text-center"> Buscar Contacto </h4>
+            <form action="{% url 'buscar_contacto' %}" method="GET"> {% csrf_token %}
+              <input type="integer" name="nombre" />
+      </span>
+      <input type="submit" value="Buscar" />
+    </form>
       
       <table class="table table-striped">
           <tr>
@@ -55,6 +60,16 @@
  
   <h1 class="text-center"><a href="{% url 'inicio' %}" 
     class="btn btn-outline-primary" > VOLVER</a href ="{% url 'inicio' %}"></h1>
+
+  </center>
+  <h1 class="text-center"><a href="{% url 'tecnologias' %}" 
+    class="btn btn-outline-primary" > Ir a Tecnologias</a href ="{% url 'inicio' %}"></h1>
+  </center>
+
+  </center>
+  <h1 class="text-center"><a href="{% url 'servicios' %}" 
+    class="btn btn-outline-primary" > Ir a Servicios</a href ="{% url 'inicio' %}"></h1>
+  </center>
   
   <hr><hr>  
 </body>

@@ -31,6 +31,7 @@ urlpatterns =[
     path('crear-contacto/',views.contacto_formulario, name= "contacto_formulario"),
     path('eliminar-contacto/<int:id>/', views.eliminar_contacto, name="eliminar_contacto"),
     path('editar-contacto/<int:id>/', views.editar_contacto, name="editar_contacto"),
+    path('buscar-contacto/', views.buscarcontacto, name="buscar_contacto"),   
 
 # Urls Servicios
 
@@ -38,7 +39,7 @@ urlpatterns =[
     path('crear-servicio/',views.servicio_formulario, name= "servicio_formulario"),
     path('eliminar-servicio/<int:id>/', views.eliminar_servicio, name="eliminar_servicio"),
     path('editar-servicio/<int:id>/', views.editar_servicio, name="editar_servicio"),
-    
+    path('buscar-servicio/', views.buscarservicio, name="buscar_servicio"),    
 
     # URLS Perfil
     path('editar-perfil/', views.ProfileUpdateView.as_view(), name="editar_perfil"),

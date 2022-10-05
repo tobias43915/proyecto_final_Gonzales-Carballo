@@ -43,8 +43,7 @@
                             </li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'contacto_emails' %}"> | Contacto | </a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'acerca_appsservices' %}">Acerca de Apps Services | </a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Directorio | </a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About | </a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Directorio | </a></li>
 
                             {% if user.is_authenticated %}
                                 <p style="color: rgb(255, 255, 255); text-decoration: none; margin-right: 10px; margin-top: 7px;">Bienvenido/a {{user.username}}  </p>

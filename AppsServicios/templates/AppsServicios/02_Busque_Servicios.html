@@ -1,7 +1,7 @@
 {% extends "AppsServicios/plantilla_base_2.html" %}
 {% load static %}
 
-<!-- RESULTADO DE BUSQUEDA PARA TECNOLOGIA -->
+<!-- RESULTADO DE BUSQUEDA PARA SERVICIOS -->
 
 {% block blockname %}
     <br>
@@ -13,19 +13,20 @@
 
     <p>Resultados de la busqueda para: {{nombre}}</p>
         
-        {% if tecnologia %}
+        {% if servicio %}
         <center>
         <table class="table table-striped">
             <tr>
                 <th class="text-center">Nombre</th>
-                <th class="text-center">Version</th>
+                <th class="text-center">Tiempo</th>
+      
             </tr>
-                {% for resultado in tecnologia %}
+                {% for resultado in servicio %}
             <tr>
-                <td>{{resultado.nombre}}
-                <td>{{resultado.version}}</td>
-                <td>
-                                   
+                <td>{{resultado.nombre}}</td>
+                <td>{{resultado.tiempo}}</td>
+          
+                                                 
                 </td>
             </tr>
                 {% endfor %}
@@ -38,13 +39,7 @@
             </p>
             {% endif %}
     
-            <p><a href="{% url 'tecnologias' %}" class="btn btn-outline-primary" disabled> VOLVER </a></p>
+            <p><a href="{% url 'servicios' %}" class="btn btn-outline-primary" disabled> VOLVER </a></p>
  
 
 {% endblock blockname %}
-
-
-<!--<img src=""/> <a style="color: black; text-decoration: none" href="{% url 'editar_tecnologia' tecnologia.id %}">Editar</a> |
-                  <a style="color: black; text-decoration: none" href="{% url 'eliminar_tecnologia' tecnologia.id %}">Eliminar</a>
-
-                   

@@ -6,18 +6,8 @@
 <form method="post">
     {% csrf_token %}
 
-    <p>Nombre:
-        <input type="text" name="nombre">
-    </p>
-
-    <p>Apellido:
-        <input type="text" name="apellido">
-    </p>
-
-    <p>Email:
-        <input type="text" name="email">
-    </p>
+    {{ formulario.as_p }}
     <input type="submit"name="Enviar" />
 </form>
-
+<p><a href="{% url 'inicio' %}" class="btn btn-outline-primary" disabled> VOLVER </a></p>
 {% endblock blockname %}
